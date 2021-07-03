@@ -26,9 +26,9 @@ async function getCurrency() {
   const response = await fetch(urlCurrencyApi);
   const object = await response.json();
 
-  const keys = Object.keys(object.data["2021-07-01"]);
-  const values = Object.values(object.data["2021-07-01"]);
-  const entries = Object.entries(object.data["2021-07-01"]);
+  const keys = Object.keys(object.data["2021-08-01"]);
+  const values = Object.values(object.data["2021-08-01"]);
+  const entries = Object.entries(object.data["2021-08-01"]);
 
   const symb = ["-currency-dollar",
                 "-currency-yen",
