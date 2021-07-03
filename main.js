@@ -19,16 +19,17 @@ async function getJoke() {
 
 /* Currency API Information */
 
-const urlCurrencyApi = "https://freecurrencyapi.net/api/v1/rates?apikey=3ef93680-da4f-11eb-962d-bde501fb54e8";
+const urlCurrencyApi = "https://freecurrencyapi.net/api/v1/rates?base_currency=USD&date_from=2020-10-01&date_to=2021-01-01";
+const urlCurrencyApi2 = "https://freecurrencyapi.net/api/v1/rates?apikey=3ef93680-da4f-11eb-962d-bde501fb54e8";
 
 async function getCurrency() {
 
   const response = await fetch(urlCurrencyApi);
   const object = await response.json();
 
-  const keys = Object.keys(object.data["2021-07-01"]);
-  const values = Object.values(object.data["2021-07-01"]);
-  const entries = Object.entries(object.data["2021-07-01"]);
+  const keys = Object.keys(object.data["2020-12-31"]);
+  const values = Object.values(object.data["2020-12-31"]);
+  const entries = Object.entries(object.data["2020-12-31"]);
 
   const symb = ["-currency-dollar",
                 "-currency-yen",
