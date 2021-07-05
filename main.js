@@ -21,49 +21,35 @@ async function getJoke() {
 
 const urlCurrencyApi = "https://freecurrencyapi.net/api/v1/rates?base_currency=USD&date_from=2020-10-01&date_to=2021-01-01";
 const urlCurrencyApi2 = "https://freecurrencyapi.net/api/v1/rates?apikey=3ef93680-da4f-11eb-962d-bde501fb54e8";
+const urlCurrencyApiBun = "https://api.exchangerate-api.com/v4/latest/USD";
 
 async function getCurrency() {
 
-  const response = await fetch(urlCurrencyApi);
+  const response = await fetch(urlCurrencyApiBun);
   const object = await response.json();
 
-  const keys = Object.keys(object.data["2020-12-31"]);
-  const values = Object.values(object.data["2020-12-31"]);
-  const entries = Object.entries(object.data["2020-12-31"]);
-
-  const symb = ["-currency-dollar",
-                "-currency-yen",
+  const keys = Object.keys(object.rates);
+  const values = Object.values(object.rates);
+  
+  const symb = ["-cash",
                 "-cash-coin",
                 "-cash-stack",
                 "-coin",
-                "-currency-pound",
-                "-currency-dollar",
-                "-currency-exchange",
-                "-cash-stack",
-                "-currency-yen",
-                "-currency-dollar",
-                "-cash",
-                "-cash-coin",
-                "-cash-stack",
-                "-coin",
-                "-currency-pound",
-                "-currency-dollar",
-                "-currency-exchange",
                 "-currency-bitcoin",
-                "-currency-yen",
                 "-currency-dollar",
-                "-cash",
-                "-cash-coin",
-                "-cash-stack",
-                "-coin",
-                "-currency-pound",
-                "-currency-dollar",
+                "-currency-euro",
                 "-currency-exchange",
-                "-currency-bitcoin",
-                "-currency-yen",
-                "-currency-bitcoin",
+                "-currency-pound",
                 "-currency-yen",
               ];
+
+  let myArray = [];
+
+  for(let i=0; i<=keys.length; i++){
+    var randomIndex = Math.floor(Math.random() * 10);
+    myArray.push(symb[randomIndex]);
+  }
+
 
   document.getElementById("card-wrapper").innerHTML = "";
 
@@ -71,15 +57,15 @@ async function getCurrency() {
 
   function buildTemplate(){
     let myDiv = document.getElementById("card-wrapper");
-    
+
     for( let i=0; i<keys.length; i++){
       let cardTemplate = `
                         <div class="feature col my-4">
                           <span class="feature-icon bg-primary bg-gradient">
-                            <i class="bi bi${symb[i]}"></i>
+                            <i class="bi bi${myArray[i]}"></i>
                           </span>
                           <span id="currencyValue" class="display-6 ms-4 text-primary">${values[i]}</span>
-                          <h2>${keys[i]} to EUR </h2>
+                          <h2>${keys[i]} to USD </h2>
                           <p>This is the number of ${keys[i]} needed to buy an EURO</p>
                           <a href="#" class="icon-link">
                             Call to action
