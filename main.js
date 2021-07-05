@@ -66,7 +66,7 @@ async function getCurrency() {
                           </span>
                           <span id="currencyValue" class="display-6 ms-4 text-primary">${values[i]}</span>
                           <h2>${keys[i]} to USD </h2>
-                          <p>This is the number of ${keys[i]} needed to buy an EURO</p>
+                          <p>This is the number of ${keys[i]} needed to buy a USD</p>
                           <a href="#" class="icon-link">
                             Call to action
                             <i class="bi bi-chevron-right"></i>
